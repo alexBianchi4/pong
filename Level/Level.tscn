@@ -1,17 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy4aswy18gsat"]
+[gd_scene load_steps=10 format=3 uid="uid://cy4aswy18gsat"]
 
 [ext_resource type="PackedScene" uid="uid://cd4ean0iccuq7" path="res://Player/Player.tscn" id="1_hajd1"]
+[ext_resource type="Script" path="res://Level/Level.gd" id="1_hhaki"]
 [ext_resource type="PackedScene" uid="uid://bkdfyhc28btua" path="res://Opponent/Opponent.tscn" id="2_n0efj"]
 [ext_resource type="Script" path="res://Opponent/Opponent.gd" id="3_8m5no"]
 [ext_resource type="PackedScene" uid="uid://b24g355apekmx" path="res://Ball/Ball.tscn" id="3_y2lep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmmnd"]
-size = Vector2(1296, 7.5)
+size = Vector2(1286, 7.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxmyv"]
-size = Vector2(1289, 7.5)
+size = Vector2(1280, 7.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1iapv"]
+size = Vector2(73, 719)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rutt7"]
+size = Vector2(83, 718)
 
 [node name="Level" type="Node"]
+script = ExtResource("1_hhaki")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -20,6 +28,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.364706, 0.341176, 0.419608, 1)
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 26.0
+grow_horizontal = 2
+text = "{}-{}"
 
 [node name="Player" parent="." instance=ExtResource("1_hajd1")]
 
@@ -33,13 +51,32 @@ position = Vector2(640, 360)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
-position = Vector2(638, -3.25)
+position = Vector2(643, -3.25)
 shape = SubResource("RectangleShape2D_rmmnd")
 
 [node name="WallBottom" type="StaticBody2D" parent="."]
-position = Vector2(641, 719)
+position = Vector2(640, 719)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom"]
-position = Vector2(1, 4.25)
+position = Vector2(0, 4.25)
 shape = SubResource("RectangleShape2D_mxmyv")
+
+[node name="GoalLeft" type="Area2D" parent="."]
+position = Vector2(-35, 10)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalLeft"]
+position = Vector2(-2.5, 350.5)
+shape = SubResource("RectangleShape2D_1iapv")
+
+[node name="GoalRight" type="Area2D" parent="."]
+position = Vector2(1291, 11)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalRight"]
+position = Vector2(31.5, 349)
+shape = SubResource("RectangleShape2D_rutt7")
+
+[connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
+[connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
