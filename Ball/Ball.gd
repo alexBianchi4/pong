@@ -11,7 +11,7 @@ func _ready():
 	# randomly move ball left or right
 	velocity.x = [-1,1][randi() % 2]
 	# move ball at a random starting angle
-	velocity.y = [-0.5,0.5][randi() % 2]
+	velocity.y = [-0.4,0.4][randi() % 2]
 	
 # called every frame to move character
 # delta is the amount of time that has passed since the last frame

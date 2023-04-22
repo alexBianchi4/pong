@@ -36,3 +36,5 @@ func reset():
 	# start timer
 	$Countdown.visible = true
 	$Timer.start()
+	$Player.position.x=35
+	$Opponent.position.x=1280-35
