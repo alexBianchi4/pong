@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cd4ean0iccuq7"]
+[gd_scene load_steps=4 format=3 uid="uid://cd4ean0iccuq7"]
 
 [ext_resource type="Texture2D" uid="uid://bikdrp2lgp31y" path="res://Assets/Paddle.png" id="1_0b5kq"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_q3q15"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2gus"]
 size = Vector2(87.7715, 485.253)
@@ -8,6 +9,7 @@ size = Vector2(87.7715, 485.253)
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(100, 350)
 scale = Vector2(0.273437, 0.261719)
+script = ExtResource("1_q3q15")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
