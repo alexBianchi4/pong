@@ -3,7 +3,7 @@ extends CharacterBody2D
 # CharacterBody2D class has certain properties that control the character
 #   velocity -- the velocity of the characters movement, starts at (x=0,y=0)
 
-var speed = 300.0
+var speed = 400.0
 
 # called every frame
 func _physics_process(delta):	

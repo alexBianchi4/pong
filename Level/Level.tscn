@@ -1,22 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy4aswy18gsat"]
+[gd_scene load_steps=6 format=3 uid="uid://cy4aswy18gsat"]
 
 [ext_resource type="PackedScene" uid="uid://cd4ean0iccuq7" path="res://Player/Player.tscn" id="1_hajd1"]
+[ext_resource type="PackedScene" uid="uid://bkdfyhc28btua" path="res://Opponent/Opponent.tscn" id="2_n0efj"]
+[ext_resource type="PackedScene" uid="uid://b24g355apekmx" path="res://Ball/Ball.tscn" id="3_y2lep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmmnd"]
-size = Vector2(1296, 1.5)
+size = Vector2(1296, 7.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mxmyv"]
-size = Vector2(1289, 3)
+size = Vector2(1289, 7.5)
 
 [node name="Level" type="Node"]
 
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.364706, 0.341176, 0.419608, 1)
+
 [node name="Player" parent="." instance=ExtResource("1_hajd1")]
+
+[node name="Opponent" parent="." instance=ExtResource("2_n0efj")]
+
+[node name="Ball" parent="." instance=ExtResource("3_y2lep")]
+position = Vector2(640, 360)
 
 [node name="WallTop" type="StaticBody2D" parent="."]
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop"]
-position = Vector2(638, -0.25)
+position = Vector2(638, -3.25)
 shape = SubResource("RectangleShape2D_rmmnd")
 
 [node name="WallBottom" type="StaticBody2D" parent="."]
@@ -24,5 +39,5 @@ position = Vector2(641, 719)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom"]
-position = Vector2(1, 2)
+position = Vector2(1, 4.25)
 shape = SubResource("RectangleShape2D_mxmyv")
