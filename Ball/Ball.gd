@@ -20,6 +20,9 @@ func _physics_process(delta):
 	var collision = move_and_collide(velocity * speed * delta)
 	# if there is a collision detected then bounce the ball off the collided object
 	if collision:
+		# play hit sound
+		$CollisionSound.play()
+		# bounce ball off object
 		velocity = velocity.bounce(collision.get_normal())
 
 func stop_ball():

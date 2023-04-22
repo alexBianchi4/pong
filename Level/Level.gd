@@ -27,6 +27,8 @@ func _on_timer_timeout():
 	$Countdown.visible = false
 
 func reset():
+	# play score sound
+	$ScoreSound.play()
 	# put ball back to middle of screen
 	$Ball.position = Vector2(640,360)
 	# stop ball until timer reaches 0

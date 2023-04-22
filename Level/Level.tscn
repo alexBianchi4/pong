@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cy4aswy18gsat"]
+[gd_scene load_steps=11 format=3 uid="uid://cy4aswy18gsat"]
 
 [ext_resource type="PackedScene" uid="uid://cd4ean0iccuq7" path="res://Player/Player.tscn" id="1_hajd1"]
 [ext_resource type="Script" path="res://Level/Level.gd" id="1_hhaki"]
 [ext_resource type="PackedScene" uid="uid://bkdfyhc28btua" path="res://Opponent/Opponent.tscn" id="2_n0efj"]
 [ext_resource type="Script" path="res://Opponent/Opponent.gd" id="3_8m5no"]
 [ext_resource type="PackedScene" uid="uid://b24g355apekmx" path="res://Ball/Ball.tscn" id="3_y2lep"]
+[ext_resource type="AudioStream" uid="uid://dukpdlo5m84cj" path="res://Assets/ping_pong_8bit_plop.ogg" id="6_fc3v5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmmnd"]
 size = Vector2(1286, 7.5)
@@ -93,6 +94,9 @@ shape = SubResource("RectangleShape2D_rutt7")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_fc3v5")
 
 [connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
 [connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
