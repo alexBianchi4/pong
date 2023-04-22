@@ -37,7 +37,19 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 26.0
 grow_horizontal = 2
-text = "{}-{}"
+text = "x-y"
+
+[node name="Countdown" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.098
+offset_left = -6.0
+offset_top = 314.0
+offset_right = 6.0
+offset_bottom = 269.44
+grow_horizontal = 2
+text = "3"
 
 [node name="Player" parent="." instance=ExtResource("1_hajd1")]
 
@@ -78,5 +90,10 @@ metadata/_edit_group_ = true
 position = Vector2(31.5, 349)
 shape = SubResource("RectangleShape2D_rutt7")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="body_entered" from="GoalLeft" to="." method="_on_goal_left_body_entered"]
 [connection signal="body_entered" from="GoalRight" to="." method="_on_goal_right_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

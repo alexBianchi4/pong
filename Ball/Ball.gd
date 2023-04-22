@@ -7,18 +7,25 @@ var speed = 600
 
 # called when the scene is ready
 func _ready():
-	randomize()
-	var rng = RandomNumberGenerator.new()
+	randomize()	
 	# randomly move ball left or right
-	velocity.x = [-1,1][randi() % 2] * speed
+	velocity.x = [-1,1][randi() % 2]
 	# move ball at a random starting angle
-	velocity.y = rng.randf_range(-400,400)
+	velocity.y = [-0.5,0.5][randi() % 2]
 	
 # called every frame to move character
 # delta is the amount of time that has passed since the last frame
 func _physics_process(delta):
 	# move_and_collide returns a collision object when it collides with another object
-	var collision = move_and_collide(velocity * delta)
+	var collision = move_and_collide(velocity * speed * delta)
 	# if there is a collision detected then bounce the ball off the collided object
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
+
+func stop_ball():
+	speed = 0
+
+func start_ball():
+	velocity.x = [-1,1][randi() % 2]
+	velocity.y = [-0.5,0.5][randi() % 2]
+	speed = 600
