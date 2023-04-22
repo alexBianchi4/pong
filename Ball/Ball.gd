@@ -19,5 +19,6 @@ func _ready():
 func _physics_process(delta):
 	# move_and_collide returns a collision object when it collides with another object
 	var collision = move_and_collide(velocity * delta)
+	# if there is a collision detected then bounce the ball off the collided object
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
